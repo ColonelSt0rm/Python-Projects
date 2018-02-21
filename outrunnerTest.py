@@ -67,26 +67,26 @@ while (not done) and runOffset < 300:                                   #runs fo
         if event.type == pygame.QUIT:
             done = True                                                 #application exit handling
 
-    
+
     screen.fill(BLACK)                                                  #clear screen before render
 
     drawSky(runOffset/2 % 20)                                           #sky is backmost layer
     drawSun()                                                           #sun goes in sky (revolutionary, I know)
-    
+
     runOffset += 1                                                      #advance time to separate ground from sky
-    
+
     for x in range(301):
         if x%15 == 0:
             drawFloor(x+runOffset%15)                                   #draw groundlines, this handles movement
 
-    #if runOffset % 150 == 0:                                           #failed experiment
-        #if (runOffset/150)%3 == 0:
-            #drawText(runOffset, 25, "Technology")
+    if runOffset % 150 == 0:                                           #failed experiment
+        if (runOffset%150)%3 != 0:
+            drawText(runOffset, runOffset, "Technology")
         #elif(runOffset/150)%3 == 1:
-            #drawText(runOffset, 25, "Computers")
+        #    drawText(runOffset, runOffset, "Computers")
         #else:
-            #drawText(runOffset, 25, "Cyberspace")
-    drawText(runOffset, runOffset, "Technology")                        #cool 'Technology' moving text
+        #    drawText(runOffset, 25, "Cyberspace")
+#    drawText(runOffset, runOffset, "Technology")                        #cool 'Technology' moving text
     pygame.display.flip()                                               #show the frame
 
     clock.tick(60)                                                      #lock to 60 fps
